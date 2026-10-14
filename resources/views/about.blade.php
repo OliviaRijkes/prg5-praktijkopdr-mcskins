@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout title="about">
     <h1>Over Olivia</h1>
     <p>Heeft deze site gemaakt om een goed laravel project te maken</p>
     <h2>Waarom dit onderwerp</h2>

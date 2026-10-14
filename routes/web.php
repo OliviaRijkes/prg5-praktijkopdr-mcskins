@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SkinsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -7,5 +8,5 @@ Route::get('/', function () {
 });
 
 Route::view('/about', 'about');
-Route::resource('skins', 'SkinController');
+Route::resource('skins', SkinsController::class);
 

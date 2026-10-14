@@ -1,6 +1,6 @@
-@props([
-    '$title'=>'No Skin'
-])
+{{--@props([--}}
+{{--    '$title'=>'No Skin'--}}
+{{--])--}}
 
 <!doctype html>
 <html lang="en">
