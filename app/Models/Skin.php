@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Mcskin extends Model
+class Skin extends Model
 {
     //
 }

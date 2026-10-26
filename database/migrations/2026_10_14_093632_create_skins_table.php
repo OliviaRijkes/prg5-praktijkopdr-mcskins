@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mcskins', function (Blueprint $table) {
+        Schema::create('skins', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->text('description');

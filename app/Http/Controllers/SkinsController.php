@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Mcskin;
+use App\Models\Skin;
 use Illuminate\Http\Request;
 
 class SkinsController extends Controller
@@ -13,7 +13,7 @@ class SkinsController extends Controller
     public function index()
     {
         // show all the skins
-        $skins = Mcskin::all();
+        $skins = Skin::all();
         return view('skins.index', compact('skins'));
     }
 
@@ -22,7 +22,9 @@ class SkinsController extends Controller
      */
     public function create()
     {
-        //
+        // een leeg form laten zien
+
+        return view('skins.create');
     }
 
     /**
@@ -30,21 +32,45 @@ class SkinsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //validatie op data
+        $request->validate([
+            'name' => 'required|min:3',
+            'description' => 'required|min:3',
+            'status' => 'required',
+            'img_url' => 'required|min:3',
+            'source_url' => 'required|min:3',
+            'file_url' => 'required|min:3',
+
+        ]);
+
+        $skin = new Skin();
+        $skin->name = $request->input('name');
+        $skin->description = $request->input('description');
+        $skin->status = $request->input('status');
+        $skin->img_url = $request->input('img_url');
+        $skin->source_url = $request->input('source_url');
+        $skin->file_url = $request->input('file_url');
+
+        $skin->save();
+
+        //redirect naar products.index
+//        return redirect()->route('skins.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Mcskin $mcskin)
+    public function show(Skin $skin)
     {
         //
+//        dd($skin);
+        return view('skins.show', compact('skin'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Mcskin $mcskin)
+    public function edit(Skin $skin)
     {
         //
     }
@@ -52,7 +78,7 @@ class SkinsController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Mcskin $mcskin)
+    public function update(Request $request, Skin $skin)
     {
         //
     }
@@ -60,7 +86,7 @@ class SkinsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Mcskin $mcskin)
+    public function destroy(Skin $skin)
     {
         //
     }
