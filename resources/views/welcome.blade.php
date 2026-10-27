@@ -1,15 +1,12 @@
 <x-layout title="Home">
     <header>
-        <h1>Welkom op mijn Minecraft skin collection site</h1>
-        <p>er zijn aardig wat plekken waar je minecraft skins kan up-& downloaden, maar is het niet handig dat we onze
-            eigen favoriete skins ook een mooie gesorteerde plek krijgen, onafhankelijk van de sites waar ze geupload
-            zijn?</p>
+        <h1>Welcom on my mcskin site</h1>
+        <p>There are quite some places to upload your own skins. Here you can upload your skins and those of other creators</p>
     </header>
     <main>
         <p>
-            Je hoeft niet ingelogt te zijn om skins te zoeken,
-            maar als je skins wilt toevoegen en je eigen collectie wilt maken
-            Is registreren en inloggen nodig
+            You don't need to be logged in to view the public skins
+            If you want to add stuff, you need to log in
         </p>
     </main>
 

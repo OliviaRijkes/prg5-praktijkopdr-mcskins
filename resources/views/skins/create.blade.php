@@ -17,7 +17,10 @@
         </div>
         <div>
             <label for="status">Status</label>
-            <input type="text" id="status" name="status" value="{{old('status')}}">
+            <select name="status" id="status">
+                <option value="0">private</option>
+                <option value="1">public</option>
+            </select>
             @error('status')
             <span>{{$message}}</span>
             @enderror
@@ -30,14 +33,14 @@
             @enderror
         </div>
         <div>
-            <label for="source_link">source_link</label>
-            <input type="text" id="source_link" name="source_link" value="{{old('source_link')}}">
-            @error('source_link')
+            <label for="source_url">source url</label>
+            <input type="text" id="source_url" name="source_url" value="{{old('source_url')}}">
+            @error('source_url')
             <span>{{$message}}</span>
             @enderror
         </div>
         <div>
-            <label for="file_url">file_url</label>
+            <label for="file_url">file url</label>
             <input type="text" id="file_url" name="file_url" value="{{old('file_url')}}">
             @error('file_url')
             <span>{{$message}}</span>

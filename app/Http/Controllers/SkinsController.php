@@ -35,11 +35,11 @@ class SkinsController extends Controller
         //validatie op data
         $request->validate([
             'name' => 'required|min:3',
-            'description' => 'required|min:3',
-            'status' => 'required',
-            'img_url' => 'required|min:3',
-            'source_url' => 'required|min:3',
-            'file_url' => 'required|min:3',
+            'description' => 'required|min:10',
+            'status' => 'required|numeric:',
+            'img_url' => 'required',
+            'source_url' => 'required',
+            'file_url' => 'required',
 
         ]);
 
@@ -54,7 +54,7 @@ class SkinsController extends Controller
         $skin->save();
 
         //redirect naar products.index
-//        return redirect()->route('skins.index');
+        return redirect()->route('skins.index');
     }
 
     /**

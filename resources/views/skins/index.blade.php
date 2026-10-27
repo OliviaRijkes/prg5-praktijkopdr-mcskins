@@ -5,5 +5,5 @@
             <p>{{$skin->description}}</p>
         </article>
     @endforeach
-
+        <a href="skins/create">add a skin</a>
 </x-layout>
