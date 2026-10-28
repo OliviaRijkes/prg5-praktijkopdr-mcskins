@@ -24,7 +24,7 @@
                 </div>
             </div>
 
-            <?php if (Auth::user()){ ?>
+            @if(Auth::user())
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
@@ -77,7 +77,7 @@
                     </svg>
                 </button>
             </div>
-            <?php } else {?>
+            @else
             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                 <x-nav-link :href="route('login')" >
                     login
@@ -86,12 +86,12 @@
                     register
                 </x-nav-link>
             </div>
-            <?php } ?>
+            @endif
 
         </div>
     </div>
 
-    <?php if (Auth::user()){ ?>
+    @if(Auth::user())
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
@@ -126,7 +126,7 @@
             </div>
         </div>
     </div>
-    <?php }?>
+    @endif
 
 
 </nav>

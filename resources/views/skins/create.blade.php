@@ -1,19 +1,31 @@
 <x-app-layout>
     <h1>Create new skin</h1>
     <form action="{{route('skins.store')}}" method="post">
+        @csrf
         <div>
-            <label for="name">Naam</label>
+            <label for="name">Name</label>
             <input type="text" id="name" name="name" value="{{old('name')}}">
             @error('name')
             <span>{{$message}}</span>
             @enderror
         </div>
         <div>
-            <label for="description">Uitleg</label>
+            <label for="description">description</label>
             <input type="text" id="description" name="description" value="{{old('description')}}">
             @error('description')
             <span>{{$message}}</span>
             @enderror
+        </div>
+
+        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+
+        <div>
+            <label for="author">Author</label>
+            <select name="author_id" id="author">
+                @foreach($authors as $author)
+                    <option value="{{$author->id}}">{{$author->name}}</option>
+                @endforeach
+            </select>
         </div>
         <div>
             <label for="status">Status</label>

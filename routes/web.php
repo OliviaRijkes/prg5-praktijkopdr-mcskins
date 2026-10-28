@@ -9,7 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//breezy
+//breezy authentication
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
@@ -20,19 +20,42 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+
 //simple page
 Route::view('/about', 'about')
     ->name('about');
 
+
 //skin pages
 Route::get('/skins', [SkinsController::class, 'index'])
     ->name('skins.index');
-Route::post('/skins', [SkinsController::class, 'store'])
-    ->name('skins.store');
-Route::get('/skins/create', [SkinsController::class, 'create'])
-    ->name('skins.create');
+
+//create
+Route::middleware('auth')->group(function () {
+    Route::post('/skins', [SkinsController::class, 'store'])
+        ->name('skins.store');
+    Route::get('/skins/create', [SkinsController::class, 'create'])
+        ->name('skins.create');
+});
+
+//show
 Route::get('/skins/{skin}', [SkinsController::class, 'show'])
     ->name('skins.show');
 
+//edit
+Route::middleware('auth')->group(function () {
+    Route::get('/skins/{skin}/edit', [SkinsController::class, 'edit'])
+        ->name('skins.edit');
+    Route::patch('/skins/{skin}', [SkinsController::class, 'update'])
+        ->name('skins.update');
+});
+
+//delete
+Route::delete('/skins/{skin}', [SkinsController::class, 'destroy'])
+    ->name('skins.destroy');
+
+//uploads
+Route::get('skins/uploads', [SkinsController::class, 'uploads'])
+    ->name('skins.uploads');
 
 require __DIR__ . '/auth.php';
