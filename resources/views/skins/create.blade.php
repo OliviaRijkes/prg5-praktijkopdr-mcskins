@@ -1,4 +1,4 @@
-<x-layout title="create">
+<x-app-layout>
     <h1>Create new skin</h1>
     <form action="{{route('skins.store')}}" method="post">
         <div>
@@ -51,4 +51,4 @@
 
         <button type="submit" name="submit" value="Save">Save</button>
     </form>
-</x-layout>
+</x-app-layout>

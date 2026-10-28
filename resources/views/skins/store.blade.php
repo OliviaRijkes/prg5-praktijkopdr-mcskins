@@ -1,4 +1,4 @@
-<x-layout title="store">
+<x-app-layout>
     <p>store page</p>
 
-</x-layout>
+</x-app-layout>
