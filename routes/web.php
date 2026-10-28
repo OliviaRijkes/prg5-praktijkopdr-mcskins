@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkinsController;
+use App\Http\Controllers\UploadsController;
 use Illuminate\Support\Facades\Route;
 
 //home
@@ -54,8 +55,13 @@ Route::middleware('auth')->group(function () {
 Route::delete('/skins/{skin}', [SkinsController::class, 'destroy'])
     ->name('skins.destroy');
 
+
 //uploads
-Route::get('skins/uploads', [SkinsController::class, 'uploads'])
-    ->name('skins.uploads');
+Route::middleware('auth')->group(function () {
+    Route::get('uploads', [UploadsController::class, 'index'])
+        ->name('uploads');
+    Route::patch('/uploads/{skin}', [UploadsController::class, 'update'])
+        ->name('uploads.update');
+});
 
 require __DIR__ . '/auth.php';

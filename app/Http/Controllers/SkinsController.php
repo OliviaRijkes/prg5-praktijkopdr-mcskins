@@ -17,7 +17,7 @@ class SkinsController extends Controller
         $search = $request->input('search');
         //make a query (look at the documentation)
         $query = Skin::query();
-//        $query->where('status',1);
+        $query->where('status', 1);
         $query->when($search, function (Builder $query, $search) {
 
         });
@@ -46,7 +46,7 @@ class SkinsController extends Controller
             'name' => 'required|min:3',
             'description' => 'required|min:10',
             'author_id' => 'required|numeric',
-            'user_id'=>'required|numeric',
+            'user_id' => 'required|numeric',
             'status' => 'required|numeric:',
             'img_url' => 'required',
             'source_url' => 'required',
@@ -84,9 +84,13 @@ class SkinsController extends Controller
      */
     public function edit(Skin $skin)
     {
-        //
-        $authors = Author::all();
-        return view('skins.edit', compact('skin', 'authors'));
+        //prevent unauthorised editing
+        if ($skin->user_id === auth()->user()->id) {
+            $authors = Author::all();
+            return view('skins.edit', compact('skin', 'authors'));
+        } else{
+            return view('skins.show', compact('skin'));
+        }
     }
 
     /**
@@ -99,7 +103,7 @@ class SkinsController extends Controller
             'name' => 'required|min:3',
             'description' => 'required|min:10',
             'author_id' => 'required|numeric',
-            'user_id'=>'required|numeric',
+            'user_id' => 'required|numeric',
             'status' => 'required|numeric:',
             'img_url' => 'required',
             'source_url' => 'required',
@@ -125,12 +129,5 @@ class SkinsController extends Controller
     {
         $skin->delete();
         return redirect()->route('skins.index');
-    }
-
-
-    public function uploads()
-    {
-//        $query = Skin::query();
-//        $query->where('user_id',);
     }
 }

@@ -12,6 +12,7 @@
             <p>Uploader:{{$skin->user->name}}</p>
         </div>
     </div>
+    @auth
     @if(Auth::user()->id === $skin->user_id)
     <a href="{{route('skins.edit',$skin)}}">edit</a>
     <form action="{{route('skins.destroy',$skin)}}" method="post">
@@ -20,6 +21,7 @@
         <button type="submit">delete</button>
     </form>
     @endif
+    @endauth
 
 
 </x-app-layout>
